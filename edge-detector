@@ -1,0 +1,6 @@
+#!/bin/sh
+# Replace or expand this program
+
+read LINE
+
+echo "0  1  0  0  0  0  0  0  0  1  0  0  0  0  0  0"
