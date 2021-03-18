@@ -21,4 +21,28 @@ for d in `ls testdata`; do
     echo
 done
 
-echo "All tests finished"
+echo "All predefined tests finished"
+
+for d in `seq 5`; do
+    input_file=$tmp-input-$d
+    expected_file=$tmp-expected-$d
+    actual_file=$tmp-actual-$d
+    echo "Generating random test $d"
+    (
+        shuf -i 0-100 -n 20 | tr '\n' ' '
+        echo
+    ) > $input_file
+    cat $input_file | docker run -i --rm bara/infra-github-test-hs > $expected_file
+    cat $input_file | docker run -i --rm edge-detector > $actual_file
+    echo "Input:"
+    cat $input_file
+    echo "Output:"
+    cat $actual_file
+    if git diff -w --no-prefix --word-diff=color $actual_file $expected_file; then
+        echo "OK"
+    else
+        echo "Failed"
+        exit 1
+    fi
+    echo
+done
