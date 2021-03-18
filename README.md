@@ -9,6 +9,7 @@ as well as a hopefully interesting programming challenge.
 1. Clone this repository to a private github repository
 2. Solve the programming task in the language of your choice
 3. Modify the `Dockerfile` such, that it runs your program when run with `docker run ...`
+4. When you are happy with the result, grant access to [@baracoder](https://github.com/baracoder) to the repository.
 
 You can run `./docker-build.sh` to build the image locally and `./run-tests.sh` to test your program.
 
