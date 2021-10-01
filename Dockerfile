@@ -1,5 +1,6 @@
-FROM busybox
+FROM python:3.8.2-alpine
 
-ADD edge-detector /bin
-
-CMD [ "edge-detector" ]
+WORKDIR /usr/src/
+COPY src/edge_detector.py .
+CMD ["edge_detector.py"]
+ENTRYPOINT ["python3"]
